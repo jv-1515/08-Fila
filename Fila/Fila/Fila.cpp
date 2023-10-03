@@ -75,7 +75,7 @@ void inicializar()
 }
 
 
-void insere()
+void insere() //Complemente a função insere para que ela inclua um elemento na fila (no final)
 {
 	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
@@ -89,12 +89,34 @@ void insere()
 	novo->prox = NULL;
 
 
+	if (inicio == NULL) {
+		inicio = novo;
+		fim = inicio;
+	}
+
+	else {
+		novo->prox = fim;
+		fim = novo;
+	}
 }
 
-void remove()
+void remove() //Implemente a função remove que deve exibir e remover o primeiro elemento da fila ou exibir "Fila Vazia" se não houver nenhum elemento.
 {
+	if (fim == NULL) {
+		cout << "Fila vazia =( ";
+	}
 
+	else {
+		NO* aux = inicio;
+		cout << "Valor removido" << aux->valor <<endl;
+		inicio = aux->prox;
+		free(aux);		
 
+		if(inicio ==NULL) {
+			fim = NULL;
+
+		}
+	}
 
 }
 
